@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — AME</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      color: #1c1c1c;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 60px;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 10;
+      border-bottom: 0.5px solid #f0f0f0;
+    }
+    .nav-logo { font-size: 15px; font-weight: 500; letter-spacing: 0.22em; text-decoration: none; color: #1c1c1c; }
+    .nav-right { display: flex; align-items: center; gap: 40px; }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { font-size: 11px; color: #aaa; text-decoration: none; letter-spacing: 0.1em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #1c1c1c; }
+    .lang { font-size: 11px; color: #ccc; letter-spacing: 0.08em; cursor: pointer; user-select: none; }
+    .lang span { color: #1c1c1c; }
+
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 60px 120px;
+    }
+
+    /* ページタイトル */
+    .page-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: #bbb;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .page-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 0.5px;
+      background: #ddd;
+    }
+
+    /* AMEセクション */
+    .section { margin-bottom: 72px; }
+
+    .ame-tagline {
+      font-size: 13px;
+      line-height: 2.0;
+      color: #555;
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+
+    .ame-letters {
+      display: flex;
+      gap: 0;
+      margin-bottom: 40px;
+    }
+    .ame-letter-block {
+      display: flex;
+      flex-direction: column;
+      margin-right: 32px;
+    }
+    .ame-letter {
+      font-size: 28px;
+      font-weight: 500;
+      color: #1c1c1c;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+    .ame-word {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: #bbb;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .body-text {
+      font-size: 13px;
+      line-height: 2.1;
+      color: #555;
+    }
+
+    /* 区切り線 */
+    .section-divider {
+      width: 40px;
+      height: 0.5px;
+      background: #ddd;
+      margin: 56px 0;
+    }
+
+    /* CEOセクション */
+    .ceo-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: #bbb;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .ceo-name {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .ceo-name-sub {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 0.1em;
+      margin-bottom: 32px;
+    }
+
+    /* クライアント */
+    .clients-section { margin-bottom: 72px; }
+    .clients-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: #bbb;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .clients-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 0.5px;
+      background: #ddd;
+    }
+    .clients-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .client-pill {
+      font-size: 11px;
+      padding: 6px 18px;
+      border-radius: 20px;
+      border: 0.5px solid #e0e0e0;
+      color: #666;
+      letter-spacing: 0.05em;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      border-top: 0.5px solid #f0f0f0;
+    }
+    .footer-copy { font-size: 10px; color: #ccc; letter-spacing: 0.08em; }
+    .footer-contact {
+      font-size: 11px; color: #888; text-decoration: none;
+      letter-spacing: 0.1em; display: flex; align-items: center; gap: 6px;
+    }
+    .footer-contact:hover { color: #1c1c1c; }
+
+    /* 言語切替 */
+    .lang-jp, .lang-en { transition: opacity 0.3s; }
+    body.en .lang-jp { display: none; }
+    body.en .lang-en { display: block; }
+    body:not(.en) .lang-en { display: none; }
+    body:not(.en) .lang-jp { display: block; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">AME</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="about.html" class="active">About</a>
+      <a href="works.html">Works</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="lang" onclick="toggleLang()">
+      <span id="lang-label">JP</span> / <span id="lang-label-2">EN</span>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- AMEについて -->
+  <div class="page-eyebrow">About AME</div>
+
+  <div class="section">
+
+    <!-- 日本語 -->
+    <div class="lang-jp">
+      <p class="ame-tagline">
+        雨は、静かに降り、大地を潤し、命を育てる。<br>
+        派手さはないけれど、確かにそこにある恵み。<br>
+        AMEという名前には、そんな存在でありたいという思いを込めました。
+      </p>
+    </div>
+
+    <!-- English -->
+    <div class="lang-en">
+      <p class="ame-tagline">
+        Rain falls quietly, nourishing the earth and sustaining life.<br>
+        Not loud, not flashy — but always there, always giving.<br>
+        AME was named after that kind of presence.
+      </p>
+    </div>
+
+    <!-- AME letters -->
+    <div class="ame-letters">
+      <div class="ame-letter-block">
+        <div class="ame-letter">A</div>
+        <div class="ame-word">Art</div>
+      </div>
+      <div class="ame-letter-block">
+        <div class="ame-letter">M</div>
+        <div class="ame-word">Music</div>
+      </div>
+      <div class="ame-letter-block">
+        <div class="ame-letter">E</div>
+        <div class="ame-word">Empathy</div>
+      </div>
+    </div>
+
+    <div class="lang-jp">
+      <p class="body-text">
+        AMEは2017年、東京で設立したクリエイティブカンパニーです。<br>
+        デザイン、映像、音楽、翻訳を横断し、言語とクリエイティブの力で、ボーダーレスに仕事をします。<br>
+        アジアからヨーロッパ、アメリカまで——国や業界の境界を越えて、プロジェクトを動かしてきました。
+      </p>
+    </div>
+    <div class="lang-en">
+      <p class="body-text">
+        Founded in Tokyo in 2017, AME is a creative company that works across design, film, music, and translation.<br>
+        Borderless by nature — from Asia to Europe and the Americas, we move projects across languages, industries, and cultures.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- CEOについて -->
+  <div class="section">
+    <div class="ceo-label">CEO</div>
+    <div class="ceo-name">杜　夢</div>
+    <div class="ceo-name-sub">Du Meng</div>
+
+    <div class="lang-jp">
+      <p class="body-text">
+        重慶生まれ、東京在住のクリエイティブプロデューサー。<br>
+        日本語・英語・中国語、三言語を武器に、グラフィックデザイン・映像・音楽・翻訳と、多くの領域を渡り歩いてきました。<br><br>
+        大切にしているのは、「何を作るか」よりも「どう思い、どう動くか」。<br>
+        その姿勢が、そのままAMEの仕事になっています。
+      </p>
+    </div>
+    <div class="lang-en">
+      <p class="body-text">
+        A creative producer born in Chongqing, based in Tokyo.<br>
+        With Japanese, English, and Chinese as her tools, she has worked across graphic design, film, music, and translation.<br><br>
+        What she cares about most is not what we produce, but how we think and how we act.<br>
+        That is AME.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- クライアント -->
+  <div class="clients-section">
+    <div class="clients-label">Clients</div>
+    <div class="clients-grid">
+      <span class="client-pill">SONY MUSIC GROUP</span>
+      <span class="client-pill">ByteDance</span>
+      <span class="client-pill">iQIYI</span>
+      <span class="client-pill">Kappa</span>
+      <span class="client-pill">KAIRI EGUCHI STUDIO</span>
+      <span class="client-pill">NOBODCR</span>
+      <span class="client-pill">Eque M / PUYI Optical</span>
+      <span class="client-pill">SUNSET CLIMAX</span>
+      <span class="client-pill">Mr. Positive</span>
+      <span class="client-pill">元気森林</span>
+      <span class="client-pill">imageMILL</span>
+      <span class="client-pill">荒川技研工業</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-copy">© 2026 AME Co., Ltd.</div>
+  <a href="contact.html" class="footer-contact">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round">
+      <rect x="1" y="2.5" width="10" height="7" rx="1"/>
+      <path d="M1 3.5l5 3.5 5-3.5"/>
+    </svg>
+    Contact
+  </a>
+</footer>
+
+<script>
+  function toggleLang() {
+    document.body.classList.toggle('en');
+    const isEn = document.body.classList.contains('en');
+    document.getElementById('lang-label').style.color = isEn ? '#ccc' : '#1c1c1c';
+    document.getElementById('lang-label-2').style.color = isEn ? '#1c1c1c' : '#ccc';
+  }
+</script>
+
+</body>
+</html>
